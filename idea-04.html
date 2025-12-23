@@ -19,6 +19,7 @@
       --glass-border: rgba(255, 255, 255, 0.08);
       --link: #839700;
       --link-hover: #FFE200;
+      --link-hover-underline: #ff9900;
       --cta-btn-hover-text: #0b0b0b;
     }
 
@@ -64,7 +65,7 @@
 
     h2 {
       font-family: 'TT Octosquares Expanded Bold', sans-serif;
-      color: var(--brand-accent);
+      color: var(--brand);
       font-size: clamp(1.4rem, 3vw, 3rem);
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     }
@@ -86,7 +87,7 @@
     }
 
     a:hover {
-      color: var(--link-hover);
+      color: var(--brand);
     }
 
     .container {
@@ -165,7 +166,7 @@
       left: 0;
       width: 0%;
       height: 2px;
-      background: var(--brand);
+      background: var(--brand-accent);
       transition: width 0.3s ease;
     }
 
