@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+
+:root {
+  --brand: #dfff00;
+  --brand-accent: #78e700;
+  --text: #ffffff;
+  --bg-dark: #0b0b0b;
+  --bg-section: #111;
+  --glass-bg: rgba(15, 15, 15, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --link: #839700;
+  --link-hover: #FFE200;
+  --link-hover-underline: #ff9900;
+  --cta-btn-hover-text: #0b0b0b;
+  --panel-hr: #1F3B01;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  background: var(--bg-dark);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: 'TT Octosquares Expanded Bold';
+  src: url('fonts/tt-octosquares/TT_Octosquares_Expanded_Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  word-wrap: break-word;
+}
+
+h1 {
+  font-family: 'TT Octosquares Expanded Bold', sans-serif;
+  color: var(--brand);
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+h2 {
+  font-family: 'TT Octosquares Expanded Bold', sans-serif;
+  color: var(--brand);
+  font-size: clamp(1.4rem, 3vw, 3rem);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+  color: var(--brand);
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+h4 {
+  color: var(--brand);
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  color: var(--brand);
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+}
+
+.header-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+header .logo img {
+  height: 55px;
+}
+
+.logo-text h1,
+.logo-text h2 {
+  color: var(--text);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.header-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.header-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(0.7rem, 1.4vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 7px;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 1.8rem;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--brand-accent);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+nav.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: #000;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--glass-border);
+  position: absolute;
+  top: 75px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+nav.mobile-nav a {
+  margin: 0.7rem 0;
+  font-size: 1.3rem;
+}
+
+.header-space {
+  height: 75px;
+}
+
+/* HERO */
+.hero-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Removed after shift to SSG */
+/* .hero-section:first-of-type {
+      height: 100vh;
+    } */
+
+.hero-section-home {
+  height: 100vh;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.hero-content,
+.hero-panel {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), inset 0 0 15px rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  padding: 2.8rem;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.hero-content::before,
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(45deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 10px);
+  border-radius: 18px;
+}
+
+.hero-logo {
+  height: 150px;
+}
+
+.hero-content p {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+.hero-panel {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  overflow: hidden;
+  margin: 1rem auto;
+}
+
+.panel {
+  flex: 1;
+  min-width: 250px;
+  padding: 2.2rem;
+  position: relative;
+}
+
+.panel img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.panel h1,
+.panel h2,
+.panel h3,
+.panel h4 {
+  word-wrap: break-word;
+  position: relative;
+  text-align: center;
+  margin: 1rem auto 1rem;
+}
+
+/* Accent line under headings */
+.panel h1::after,
+.panel h2::after,
+.panel h3::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 50px;
+  background: var(--brand-accent);
+  margin: 0.5rem auto 0;
+  border-radius: 1px;
+}
+
+.panel p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  display: block;
+  height: 1px;
+  background: var(--panel-hr);
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin-top: 1.5rem;
+  background: var(--brand);
+  color: #000;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  background: var(--brand-accent);
+  color: var(--cta-btn-hover-text);
+}
+
+section.page-section {
+  width: 100%;
+  padding: 1rem 0 2rem 0;
+  background: var(--bg-section);
+  border-top: 1px solid #171717;
+  border-bottom: 1px solid #000;
+}
+
+section.page-section p {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  /* max-width: 800px; */
+  margin: 1rem auto 0;
+}
+
+footer {
+  background: #000;
+  padding: 2rem;
+  text-align: center;
+  border-top: 2px solid var(--brand-accent);
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (max-width: 400px) {
+  header .logo img {
+    height: 35px;
+  }
+
+  .header-title {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+  }
+
+  .header-subtitle {
+    font-size: clamp(0.6rem, 3.5vw, 0.8rem);
+    letter-spacing: 4px;
+  }
+
+  .header-container {
+    justify-content: space-between;
+  }
+}
